@@ -1,0 +1,14 @@
+Zdefiniuj abstrakcyjną klasę Singer opisującą piosenkarzy, z których każdy ma imie i numer (np. w konsursie talentów) który jest przypisywany automatycznie gdy obiekt jest tworzony. Klasa będzie zawierać tylko jeden konstruktor przyjmujący ciąg znaków jako imie pososenkarza. oraz następujące metody:
+abstract: abstract String sing(), zwracającą tekst piosenki śpiewanej przez wykonawcę podczas konkursu;
+public String toString() zwracającą informacje o wykonawcy;
+static: ... loudest(...) przyjmującej jako argument tablicę obiektów Singer i zwracającą ten tekst piosenki, który zawiera najwięcej wielkich liter.
+I metodzie main testowej klasy Main_:
+utwórz przynajmniej 3 obiekty/piosenkarzy wykorzystując klasę anonimową reprezentującą piosenkarza. Zaimplementuj zbiór tekstów wykonywanych podczas konkursu;
+utwórz tablicę wykonawców zawierającą elementy z punktu 1
+przetestuj metodę loudest klasy Singer.
+Metoda main załączonej klasy Main powinna wyświetlić:
+
+(1) Martin: Arrivederci, Roma... 
+(2) Joplin: ...for me and my Bobby MacGee 
+(3) Houston: I will always love youuuu 
+(2) Joplin: ...for me and my Bobby MacGee
