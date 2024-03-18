@@ -7,22 +7,33 @@ public abstract class Singer {
         this.name = name;
         this.number = counter++;
     }
+
     abstract String sing();
 
     public String toString() {
         return "(" + number + ")" + name + ": " + sing();
     }
+
     public static String loudest(Singer[] singers) {
         int index = 0;
-        int max = singers[0].sing().length();
-
-        for (int i = 1; i < singers.length; i++) {
-
-            if (singers[i].sing().length() > max) {
-                max = singers[i].sing().length();
-                index++;
+        int maxCapitalLetters = 0;
+        for (int i = 0; i < singers.length; i++) {
+            int capitalLetters = countCapitalLetters(singers[i].sing());
+            if (capitalLetters > maxCapitalLetters) {
+                maxCapitalLetters = capitalLetters;
+                index = i;
             }
         }
-        return "(" + singers[index].number + ")" + singers[index].name + ": " + singers[index].sing();
+        return singers[index].toString();
+    }
+
+    private static int countCapitalLetters(String str) {
+        int count = 0;
+        for (char c : str.toCharArray()) {
+            if (Character.isUpperCase(c)) {
+                count++;
+            }
+        }
+        return count;
     }
 }
