@@ -54,7 +54,7 @@ public abstract class Singer {
             }
         }
         if (index == -1) {
-            return "Wszyscy mruczą pod nosem.";
+            return "Wszyscy mruczą pod nosem. Nikt głośno nie śpiewa";
         } else {
             return "(" + singers[index].number + ")" + singers[index].name + ": " + singers[index].sing();
         }
