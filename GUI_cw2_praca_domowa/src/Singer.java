@@ -14,7 +14,7 @@ public abstract class Singer {
         return "(" + number + ")" + name + ": " + sing();
     }
 
-    public static String loudest(Singer[] singers) {
+    /*public static String loudest(Singer[] singers) {
         int index = 0;
         int maxCapitalLetters = 0;
         for (int i = 0; i < singers.length; i++) {
@@ -35,5 +35,24 @@ public abstract class Singer {
             }
         }
         return count;
+    }*/
+
+    public static String loudest(Singer[] singers) {
+        int count = 0;
+        int max = 0;
+        int index = -1;
+        for (int i = 0; i < singers.length; i++) {
+            count = 0;
+            for (int j = 0; j < singers[i].sing().length(); j++) {
+                if (Character.isUpperCase(singers[i].sing().charAt(j))) {
+                    count++;
+                }
+            }
+            if (count > max) {
+                index++;
+                max = count;
+            }
+        }
+        return "(" + singers[index].number + ")" + singers[index].name + ": " + singers[index].sing();
     }
 }
