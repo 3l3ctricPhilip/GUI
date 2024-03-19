@@ -53,6 +53,10 @@ public abstract class Singer {
                 max = count;
             }
         }
-        return "(" + singers[index].number + ")" + singers[index].name + ": " + singers[index].sing();
+        if (index == -1) {
+            return "Wszyscy mruczą pod nosem.";
+        } else {
+            return "(" + singers[index].number + ")" + singers[index].name + ": " + singers[index].sing();
+        }
     }
 }
