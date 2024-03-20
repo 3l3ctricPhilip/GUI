@@ -1,8 +1,8 @@
-public class Delimiter implements TwoStringsOper {
+public class Separ implements TwoStringsOper {
 
     private String delimiter;
 
-    public Delimiter(String delimiter) {
+    public Separ(String delimiter) {
         this.delimiter = delimiter;
     }
 
