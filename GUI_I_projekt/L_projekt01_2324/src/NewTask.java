@@ -1,5 +1,7 @@
+import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 public class NewTask {
@@ -8,23 +10,28 @@ public class NewTask {
         System.out.println("Wprowadź treść zadania (zakończ wprowadzanie używając 'Ctrl+D' na Unix/Linux/Mac lub 'Ctrl+Z' na Windows):");
 
         StringBuilder contentBuilder = new StringBuilder();
-        String line;
-        while (scanner.hasNextLine()) {
-            line = scanner.nextLine();
-            contentBuilder.append(line).append(System.lineSeparator());
-        }
-        scanner.close();
-        String content = contentBuilder.toString();
 
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                contentBuilder.append(line).append(System.lineSeparator());
+            }
+        } catch (IOException e) {
+            System.out.println("Błąd przy odczycie danych: " + e.getMessage());
+        }
+
+        String content = contentBuilder.toString();
 
         Task task = new Task(content);
 
-        Scanner fileScanner = new Scanner(System.in);
-        System.out.print("Podaj nazwę pliku do zapisania (bez rozszerzenia .txt): ");
-        String filename = fileScanner.nextLine();
-        fileScanner.close();
+        String fileName = addNameOfFile(scanner);
 
-        saveTaskToFile(task, filename + ".txt");
+        saveTaskToFile(task, fileName + ".txt");
+    }
+
+    private String addNameOfFile(Scanner scanner) {
+        System.out.print("Podaj nazwę pliku do zapisania (bez rozszerzenia .txt): ");
+        return scanner.nextLine();
     }
 
     private void saveTaskToFile(Task task, String filename) {
